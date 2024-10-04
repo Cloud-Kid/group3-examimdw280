@@ -41,6 +41,9 @@ jobs:
     needs: [build, trivy]
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Login to OpenShift
       run: |
         oc login https://api.openshift.kakor.ovh:6443 --insecure-skip-tls-verify --token=sha256~8IesPQBbRwWUpXddbyORfuazAaZCKBqczveCI_F01SQ
