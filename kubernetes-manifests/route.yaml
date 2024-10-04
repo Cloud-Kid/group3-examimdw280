@@ -4,14 +4,14 @@ kind: Route
 metadata:
   creationTimestamp: null
   name: bookstack
-  namespace: projet-gp-<x>
+  namespace: projet-gp-3
 spec:
-  host: python-gp-<x>.apps.openshift.kakor.ovh
+  host: python-gp-3.apps.openshift.kakor.ovh
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   port:
-    targetPort: 80
+    targetPort: 5000
   to:
     kind: ""
     name: python-svc
