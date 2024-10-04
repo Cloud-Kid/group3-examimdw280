@@ -33,11 +33,13 @@ jobs:
     - name: Install Trivy
       run: |
         sudo apt-get update
-        sudo apt-get install -y trivy
+        sudo apt-get install -y wget
+        wget https://github.com/aquasecurity/trivy/releases/download/v0.41.0/trivy_0.41.0_Linux-64bit.deb
+        sudo dpkg -i trivy_0.41.0_Linux-64bit.deb
 
-#    - name: Run Trivy scan
-#      run: trivy image harbor.kakor.ovh/ipi/groupe3:${{ github.sha }}
-#      continue-on-error: true
+    - name: Run Trivy scan
+      run: trivy image harbor.kakor.ovh/ipi/groupe3:${{ github.sha }}
+      continue-on-error: true
 
     - name: Scan Image with Trivy
       uses: aquasecurity/trivy-action@v0.20.0
