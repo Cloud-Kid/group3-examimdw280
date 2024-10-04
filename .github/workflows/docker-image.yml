@@ -30,6 +30,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install Trivy
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y trivy
+
     - name: Run Trivy scan
       run: trivy image harbor.kakor.ovh/ipi/groupe3:${{ github.sha }}
       continue-on-error: true
