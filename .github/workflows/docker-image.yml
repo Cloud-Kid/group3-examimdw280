@@ -35,9 +35,17 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y trivy
 
-    - name: Run Trivy scan
-      run: trivy image harbor.kakor.ovh/ipi/groupe3:${{ github.sha }}
-      continue-on-error: true
+#    - name: Run Trivy scan
+#      run: trivy image harbor.kakor.ovh/ipi/groupe3:${{ github.sha }}
+#      continue-on-error: true
+
+    - name: Scan Image with Trivy
+      uses: aquasecurity/trivy-action@v0.3.0
+      with:
+        image-ref: harbor.kakor.ovh/ipi/groupe3:${{ github.sha }}
+        format: 'table'
+        exit-code: '1' # Ne pas arrêter le pipeline si des vulnérabilités sont trouvées
+ 
 
   deploy:
     runs-on: ubuntu-latest
