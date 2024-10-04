@@ -49,4 +49,4 @@ jobs:
         oc login https://api.openshift.kakor.ovh:6443 --insecure-skip-tls-verify --token=sha256~8IesPQBbRwWUpXddbyORfuazAaZCKBqczveCI_F01SQ
 
     - name: Deploy to OpenShift
-      run: oc apply -f kubernetes-manifest/deployment.yaml
+      run: oc apply -f kubernetes-manifests/deployment.yaml
